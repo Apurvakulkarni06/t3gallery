@@ -1,19 +1,15 @@
 import { db } from "~/server/db";
 import { SignInButton, SignedIn, SignedOut, UserButton} from '@clerk/nextjs';
+import { getImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 async function Images(){
   
-  const images = await db.query.images.findMany({
-    orderBy: (model, {desc}) => desc(model.id)
-  });
-  
+  const images = await getImages();
 
   return(
     <div className="flex flex-wrap gap-4">
-      
-
     {
       images.map((image, index)=>(
         <div key={image.id + '_' + index} className="flex w-48 flex-col">
