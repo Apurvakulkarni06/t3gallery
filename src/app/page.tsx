@@ -13,7 +13,7 @@ export default async function HomePage() {
         {
           [...images, ...images, ...images].map((image, index)=>(
             <div key={image.id + '_' + index} className="flex w-48 flex-col">
-              <img src={image.url} />
+              <img className="h-48 object-cover" src={image.url} />
               <p>{image.name}</p>
             </div>
           ))
